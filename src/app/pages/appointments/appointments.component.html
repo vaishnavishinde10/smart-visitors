@@ -1,0 +1,22 @@
+<h2>Appointments</h2>
+
+<!-- View appointments (Admin, Receptionist, Host) -->
+<div *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST' || role === 'HOST'">
+    <h3>All Appointments</h3>
+    <ul>
+        <li *ngFor="let appt of appointments">
+            {{ appt.visitorName }} with {{ appt.hostName }} at {{ appt.scheduledAt }} - Status: {{ appt.status }}
+        </li>
+    </ul>
+</div>
+
+<!-- Create appointment (Visitor only) -->
+<div *ngIf="role === 'VISITOR'">
+    <h3>Request Appointment</h3>
+    <form (ngSubmit)="createAppointment()">
+        <input type="text" placeholder="Visitor ID" [(ngModel)]="visitorId" name="visitorId" required />
+        <input type="text" placeholder="Host ID" [(ngModel)]="hostId" name="hostId" required />
+        <input type="datetime-local" [(ngModel)]="scheduledAt" name="scheduledAt" required />
+        <button type="submit">Submit</button>
+    </form>
+</div>

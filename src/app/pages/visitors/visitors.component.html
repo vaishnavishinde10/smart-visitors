@@ -1,0 +1,22 @@
+<h2>Visitor Management</h2>
+
+<!-- Add form for ADMIN & RECEPTIONIST -->
+<div *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST'">
+    <h3>Add Visitor</h3>
+    <form (ngSubmit)="addVisitor()">
+        <input type="text" placeholder="Name" [(ngModel)]="name" name="name" required />
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+        <input type="text" placeholder="Phone" [(ngModel)]="phone" name="phone" required />
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<!-- Visitor list -->
+<div>
+    <h3>All Visitors</h3>
+    <ul>
+        <li *ngFor="let visitor of visitors">
+            {{ visitor.name }} | {{ visitor.email }} | {{ visitor.phone }}
+        </li>
+    </ul>
+</div>

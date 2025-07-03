@@ -1,0 +1,8 @@
+<p>navbar works!</p>
+<nav>
+    <span><strong>SVMS</strong> | Role: {{ role }}</span>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST'" routerLink="/visitors">Visitors</a>
+    <a *ngIf="['ADMIN', 'RECEPTIONIST', 'VISITOR', 'HOST'].includes(role)" routerLink="/appointments">Appointments</a>
+    <button (click)="logout()">Logout</button>
+</nav>

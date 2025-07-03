@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Welcome to Dashboard</h2>
+
+            <p class="text-center">
+                <strong>Logged in as:</strong>
+                <span class="badge bg-primary text-uppercase">{{ role }}</span>
+            </p>
+
+            <ul class="list-group list-group-flush mb-4">
+                <!-- View Visitors: ADMIN, RECEPTIONIST, GUARD -->
+                <li *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST' || role === 'GUARD'" class="list-group-item">
+                    <a routerLink="/visitors" class="text-decoration-none">👁️ View Visitors</a>
+                </li>
+
+                <!-- Add Visitor: ADMIN, RECEPTIONIST -->
+                <li *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST'" class="list-group-item">
+                    <a routerLink="/visitors/add" class="text-decoration-none">➕ Add Visitor</a>
+                </li>
+
+                <!-- View Appointments: ADMIN, RECEPTIONIST, HOST -->
+                <li *ngIf="role === 'ADMIN' || role === 'RECEPTIONIST' || role === 'HOST'" class="list-group-item">
+                    <a routerLink="/appointments" class="text-decoration-none">📅 View Appointments</a>
+                </li>
+
+                <!-- Create Appointment: VISITOR -->
+                <li *ngIf="role === 'VISITOR'" class="list-group-item">
+                    <a routerLink="/appointments" class="text-decoration-none">📝 Create Appointment</a>
+                </li>
+            </ul>
+
+            <div class="text-center">
+                <button class="btn btn-outline-danger w-50" (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
